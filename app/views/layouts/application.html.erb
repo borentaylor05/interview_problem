@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>InterviewProblem</title>
+  <title>SKE</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <h1><%= link_to "InterviewProblem", '/users', id: "logo", class: "pull-left" %></h1>
+        <nav>
+          <ul class="nav navbar-nav navbar-right pull-right">
+        			
+          </ul>
+        </nav>
+      </div>
+    </header>
+	<div class="container">
+		<%= yield %>	
+	</div>
 </body>
 </html>

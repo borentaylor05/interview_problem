@@ -1,0 +1,32 @@
+<div class="container" ng-app="App" ng-controller="UserCtrl as u">
+	<h1 class="text-center">New User</h1>
+	<div class="formContainer" ng-hide="u.info">
+		<form name="userForm" ng-submit="u.create(newUser)" novalidate>
+			<label>First Name <span class="red">*</span></label>
+			<input name="first_name" type="text" class="form-control" ng-model="newUser.first_name" required>	
+			<p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="help-block">First Name is required.</p>
+
+			<label>Last Name <span class="red">*</span></label>
+			<input name="last_name" type="text" class="form-control" ng-model="newUser.last_name" required>	
+			<p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="help-block">Last Name is required.</p>
+
+			<label>Email <span class="red">*</span></label>
+			<input name="email" type="text" class="form-control" ng-model="newUser.email" required>	
+			<p ng-show="!u.validEmail(newUser.email) && !userForm.email.$pristine" class="help-block">Email is invalid.</p>
+
+			<label>Social Security Number <span class="red">*</span></label>
+			<input name="social_security_number" type="text" class="form-control" ng-model="newUser.social_security_number" required>	
+			<p ng-show="!u.validSSN(newUser.social_security_number)" class="help-block">SSN is required and must be of format 123456789 or 123-45-6789.</p>
+
+			<div class="text-center">
+				<button ng-disabled="u.formInvalid(newUser) || userForm.$invalid" class="btn btn-md btn-info">Create User</button>
+			</div>
+
+		</form>
+	</div>
+	<div class="alert alert-success" ng-if="u.info">
+		<h2>User created successfully...</h2>
+		<div> {{ u.info }} </div>
+		<a href="/users">Go to all users</a>
+	</div>
+</div>

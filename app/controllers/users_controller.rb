@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 			first_name: params[:first_name],
 			last_name: params[:last_name],
 			email: params[:email],
-			social_security_number: params[:social_security_number]
+			social_security_number: params[:social_security_number].gsub!("-", "").to_i
 		)
 		if user.valid?
 			user.save
